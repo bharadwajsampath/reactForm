@@ -8,19 +8,15 @@ const RenderDynamicFields = ({ dynamicFields }) =>
   dynamicFields.map((item, index) => {
     // const field = fromJS(item).toJS();
     return (
-      <div>
-        <div>one</div>
-        <div>
-          <Field
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            component={item.component}
-            validate={item.validate}
-            name={item.name}
-            // {...field}
-            inputProps={item.inputProps}
-          />
-        </div>
+      <div className="form-input" key={`${index}`}>
+        <Field
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
+          component={item.component}
+          validate={item.validate}
+          name={item.name}
+          {...item}
+        />
       </div>
     );
   });

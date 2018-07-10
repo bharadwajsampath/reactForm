@@ -1,3 +1,4 @@
+import moment from "moment";
 import error from "./error";
 
 const isEmpty = value =>
@@ -68,4 +69,14 @@ export const notIncludes = arrList => value => {
   });
 
   return validationError;
+};
+
+export const validateAge = () => value => {
+  let errorMessage = "You must be at least 18 years old to register with us.";
+  const valueYear = moment(value).year();
+  const currentYear = moment(Date.now()).year();
+  if (currentYear - valueYear < 18) {
+    return error(errorMessage);
+  }
+  return undefined;
 };
